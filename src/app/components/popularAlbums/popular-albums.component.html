@@ -1,0 +1,29 @@
+<div class="albums">
+  <div class="header">
+    <div class="header-align">
+      <button mat-button routerLink="genre">Back</button>
+      <input type="text" [formControl]="searchControl" />
+    </div>
+
+    <mat-icon [matBadge]="likes.length" matBadgeColor="primary" matBadgeSize="small">favorite</mat-icon>
+  </div>
+
+  <div *ngIf="topAlbums$ | async as topAlbums" class="card-wrapper">
+    <div *ngFor="let album of topAlbums.filteredAlbums" class="album-card">
+      <img *ngIf="album.image[2]['#text']" [src]="album.image[2]['#text']" alt="Image"
+        class="card-image">
+
+      <div class="overlay" (click)="toggleLike(album)">
+        <div class="description">
+          <p>{{album.name}}</p>
+
+          <p>{{album.artist.name}}</p>
+
+          <button mat-icon-button>
+            <mat-icon>{{ isLikedAlbum(album) ? 'favorite' : 'favorite_border'}}</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

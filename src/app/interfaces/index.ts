@@ -1,0 +1,1 @@
+export { TopAlbums } from './top-album.interface';

@@ -1,0 +1,1 @@
+export { AppInterceptor } from './app/app.interceptor';
